@@ -4,4 +4,7 @@
     - htop
     - fzf
     - tmux
+    - xclip
+    - trash-cli
+    - dirsize
     
