@@ -33,3 +33,4 @@
   dconf:
     key: "/org/gnome/desktop/input-sources/sources"
     value: "[('xkb', 'us'), ('xkb', 'latam')]"
+  become_user: pablo
