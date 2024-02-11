@@ -1,6 +1,36 @@
-- name: Mafe file executable
-  shell: chmod +x files/install_pyenv.sh
+- name: Install dependencies for Pyenv
+  apt:
+    name:
+      - git
+      - curl
+      - zlib1g-dev
+      - libssl-dev
+      - libreadline-dev
+      - libbz2-dev
+      - libsqlite3-dev
+      - llvm
+      - libncurses5-dev
+      - libncursesw5-dev
+      - xz-utils
+      - tk-dev
+      - libffi-dev
+      - liblzma-dev
+    state: present
 
-- name: Install pyenv
-  shell: files/install_pyenv.sh
+- name: Clone Pyenv repository
+  git:
+    repo: https://github.com/pyenv/pyenv.git
+    dest: /home/pablo/.pyenv
+    version: master
+    force: yes
+    clone: yes
+    update: no
+  become_user: pablo
+
+- name: Set up environment variables for Pyenv
+  lineinfile:
+    dest: /home/pablo/.bashrc
+    line: |
+      export PYENV_ROOT="/home/pablo/.pyenv"
+      export PATH="$PYENV_ROOT/bin:$PATH"
   become_user: pablo
