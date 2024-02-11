@@ -1,0 +1,15 @@
+- name: Set gnome dock settings
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+  loop:
+    - { key: "/org/gnome/shell/extensions/dash-to-dock/dash-max-icon-size", value: "48" }
+    - { key: "/org/gnome/shell/extensions/dash-to-dock/dock-fixed", value: "false" }
+    - { key: "/org/gnome/shell/extensions/dash-to-dock/dock-position", value: "BOTTOM" }
+    - { key: "/org/gnome/shell/extensions/dash-to-dock/extend-height", value: "false" }
+    - { key: "/org/gnome/shell/extensions/dash-to-dock/show-trash", value: "false" }
+    
+- name: Don't show home folder on desktop
+  dconf:
+    key: "/org/gnome/shell/extensions/ding/show-home"
+    value: "false"
