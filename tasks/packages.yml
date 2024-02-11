@@ -1,10 +1,22 @@
-- name: Install packages
-  apt: name={{item}}
-  with_items:
+- name: Install apt packages
+  apt:
+    name: "{{ packages }}"
+  vars:
+    packages:
     - htop
     - fzf
     - tmux
     - xclip
     - trash-cli
-    - dirsize
     
+-name: Install snap packages
+  snap:
+    name:
+      - dirsize
+      - netron
+      - postman
+
+- name: Install vscode
+  snap:
+    name: code
+    classic: true
