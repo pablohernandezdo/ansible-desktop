@@ -143,12 +143,12 @@ alias fsize="du -ah . | sort -hr | head -n 10"
 bind Space:magic-space
 
 # # pyenv
-# export PYENV_ROOT="$HOME/.pyenv"
-# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init -)"
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
-# # pyenv virtualenv
-# eval "$(pyenv virtualenv-init -)"
+# pyenv virtualenv
+eval "$(pyenv virtualenv-init -)"
 
 parse_git_branch() {
    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
