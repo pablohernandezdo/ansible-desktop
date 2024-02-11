@@ -21,5 +21,8 @@
 
 - name: Install Docker
   apt:
-    name: docker-ce docker-ce-cli containerd.io
+    name: 
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
     state: present
