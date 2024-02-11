@@ -5,9 +5,7 @@
       apt: update_cache=yes
       changed_when: false
 
-  - tasks:
+  tasks:
     - include: tasks/users.yml
     - include: tasks/cron.yml
     - include: tasks/packages.yml
-
-
