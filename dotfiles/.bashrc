@@ -118,8 +118,9 @@ fi
 
 # user defined aliases
 alias python='python3'
-alias ve='python3 -m venv ./venv'
+alias ve='python -m venv ./venv'
 alias va='source ./venv/bin/activate'
+alias vea='python -m venv ./venv && source ./venv/bin/activate'
 alias vd='deactivate'
 alias vrm='rm -rf ./venv'
 
