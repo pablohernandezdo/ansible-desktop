@@ -3,6 +3,7 @@
     name: "{{ packages }}"
   vars:
     packages:
+    - make
     - gcc
     - curl
     - htop
