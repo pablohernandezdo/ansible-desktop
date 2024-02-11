@@ -1,3 +1,5 @@
+- name: Mafe file executable
+  shell: chmod +x files/install_pyenv.sh
+
 - name: Install pyenv
   shell: files/install_pyenv.sh
-  
