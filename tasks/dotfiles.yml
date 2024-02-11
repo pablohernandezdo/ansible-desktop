@@ -1,2 +1,2 @@
 - name: copy bashrc
-  copy: src=files/.bashrc dest=/home/pablo/.bashrc owner=pablo group=pablo mode=0644
+  copy: src=dotfiles/.bashrc dest=/home/pablo/.bashrc owner=pablo group=pablo mode=0644
