@@ -15,3 +15,26 @@
     key: "/org/gnome/shell/extensions/ding/show-home"
     value: "false"
   become_user: pablo
+
+- name: Set gnome background
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+  loop:
+    - { key: "/org/gnome/desktop/background/color-shading-type", value: "'solid'" }
+    - { key: "/org/gnome/desktop/background/picture-options", value: "'zoom'" }
+    - { key: "/org/gnome/desktop/background/picture-uri", value: "'file:///usr/share/backgrounds/Milkyway_by_mizuno_as.png'" }
+    - { key: "/org/gnome/desktop/background/picture-uri-dark", value: "'file:///usr/share/backgrounds/Milkyway_by_mizuno_as.png'" }
+    - { key: "/org/gnome/desktop/background/primary-color", value: "'#000000'" }
+    - { key: "/org/gnome/desktop/background/secondary-color", value: "'#000000'" }
+  become_user: pablo
+
+- name: Set gnome input sources
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+  loop:
+    - { key: "/org/gnome/desktop/input-sources/mru-sources", value: "[('xkb', 'latam')]" }
+    - { key: "/org/gnome/desktop/input-sources/sources", value: "[('xkb', 'us'), ('xkb', 'latam')]" }
+    - { key: "/org/gnome/desktop/input-sources/xkb-options", value: "@as []" }
+  become_user: pablo
