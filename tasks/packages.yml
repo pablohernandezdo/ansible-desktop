@@ -3,6 +3,7 @@
     name: "{{ packages }}"
   vars:
     packages:
+    - curl
     - htop
     - fzf
     - tmux
