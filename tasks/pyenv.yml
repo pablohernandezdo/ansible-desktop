@@ -31,8 +31,9 @@
   lineinfile:
     dest: /home/pablo/.bashrc
     line: |
-      export PYENV_ROOT="/home/pablo/.pyenv"
-      export PATH="$PYENV_ROOT/bin:$PATH"
+      export PYENV_ROOT="$HOME/.pyenv"
+      [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+      eval "$(pyenv init -)"
   become_user: pablo
 
 - name: Install Pyenv-virtualenv plugin
