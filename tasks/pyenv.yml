@@ -3,3 +3,4 @@
 
 - name: Install pyenv
   shell: files/install_pyenv.sh
+  become_user: pablo
