@@ -6,6 +6,7 @@
       - curl
       - gnupg-agent
       - software-properties-common
+      - nvidia-container-runtime
     state: present
 
 - name: Add Docker's official GPG key
