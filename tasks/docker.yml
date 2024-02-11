@@ -29,6 +29,6 @@
 
 - name: Add user to the Docker group
   user:
-    name: "pablo"
+    name: pablo
     groups: docker
     append: yes
