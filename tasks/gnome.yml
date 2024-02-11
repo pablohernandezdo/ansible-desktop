@@ -31,9 +31,6 @@
 
 - name: Set gnome input sources
   dconf:
-    key: "{{ item.key }}"
-    value: "{{ item.value }}"
-  loop:
-    - { key: "/org/gnome/desktop/input-sources/mru-sources", value: "[(\'xkb\', \'latam\'), (\'xkb\', \'us\')]" }
-    - { key: "/org/gnome/desktop/input-sources/sources", value: "[(\'xkb\', \'us\'), (\'xkb\', \'latam\')]" }
-    - { key: "/org/gnome/desktop/input-sources/xkb-options", value: "@as []" }
+    key: "/org/gnome/desktop/input-sources/sources"
+    value: "[('xkb', 'us'), ('xkb', 'latam')]"
+    
