@@ -9,7 +9,7 @@
     - xclip
     - trash-cli
     
--name: Install snap packages
+- name: Install snap packages
   snap:
     name:
       - dirsize
