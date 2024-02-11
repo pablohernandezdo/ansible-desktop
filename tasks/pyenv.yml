@@ -34,3 +34,19 @@
       export PYENV_ROOT="/home/pablo/.pyenv"
       export PATH="$PYENV_ROOT/bin:$PATH"
   become_user: pablo
+
+- name: Install Pyenv-virtualenv plugin
+  git:
+    repo: https://github.com/pyenv/pyenv-virtualenv.git
+    dest: /home/pablo/.pyenv/plugins/pyenv-virtualenv
+    version: master
+    force: yes
+    clone: yes
+    update: no
+  become_user: pablo
+
+- name: Set up environment variables for Pyenv-virtualenv
+  lineinfile:
+    dest: /home/pablo/.bashrc
+    line: 'eval "$(pyenv virtualenv-init -)"'
+  become_user: pablo
