@@ -1,5 +1,5 @@
 - name: Install pyenv
   shell: curl https://pyenv.run | bash
 
-- name: Install pyenv virtualenv
-  shell: git clone https://github.com/pyenv/pyenv-virtualenv.git $HOME/.pyenv/plugins/pyenv-virtualenv
+# - name: Install pyenv virtualenv
+#   shell: git clone https://github.com/pyenv/pyenv-virtualenv.git $HOME/.pyenv/plugins/pyenv-virtualenv
