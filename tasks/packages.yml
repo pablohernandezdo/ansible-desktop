@@ -23,6 +23,7 @@
     - tmux
     - xclip
     - trash-cli
+    - python3.11-venv
     
 - name: Install snap packages
   snap:
