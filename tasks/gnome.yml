@@ -29,8 +29,7 @@
     - { key: "/org/gnome/desktop/background/secondary-color", value: "'#000000'" }
   become_user: pablo
 
-- name: Set gnome input sources
+- name: Configure available keyboard layouts in Gnome
   dconf:
     key: "/org/gnome/desktop/input-sources/sources"
     value: "[('xkb', 'us'), ('xkb', 'latam')]"
-    
