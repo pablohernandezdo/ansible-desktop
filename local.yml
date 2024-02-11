@@ -13,3 +13,4 @@
     - include_tasks: tasks/google_chrome.yml
     - include_tasks: tasks/docker.yml
     - include_tasks: tasks/pyenv.yml
+    - include_tasks: tasks/gnome.yml
