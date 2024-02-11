@@ -28,7 +28,7 @@
     state: present
 
 - name: Add user to the Docker group
-      user:
-        name: "pablo"
-        groups: docker
-        append: yes
+  user:
+    name: "pablo"
+    groups: docker
+    append: yes
