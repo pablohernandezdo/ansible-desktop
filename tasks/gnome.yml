@@ -82,7 +82,7 @@
     - { key: "/org/gnome/terminal/legacy/keybindings/move-tab-right", value: "" }
 
 - name: Set terminal background color
-  community.general.gsettings:
-    key: "org.gnome.Terminal.Legacy.Settings"
-    value: "'#000000'"  # Replace '#000000' with your desired color
-    name: "background-color"
+  dconf:
+    key: "/org/gnome/terminal/legacy/profiles:/{{profileid}}background-color"
+    value: "'rgb(0,0,0)'"
+  become_user: pablo
