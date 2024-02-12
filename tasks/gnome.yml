@@ -34,3 +34,55 @@
     key: "/org/gnome/desktop/input-sources/sources"
     value: "[('xkb', 'us'), ('xkb', 'latam')]"
   become_user: pablo
+
+- name: Configure image viewer
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+  loop:
+    - { key: "/org/gnome/eog/ui/image-gallery", value: "false" }
+    - { key: "/org/gnome/eog/ui/sidebar", value: "true" }
+    - { key: "/org/gnome/eog/ui/statusbar", value: "true" }
+    
+- name: Configure workspace keybindings
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+  loop:
+    - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-1", value: "@as []" }
+    - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-last", value: "@as []" }
+    - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-1", value: "@as []" }
+    - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-down", value: "@as []" }
+    - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-last", value: "@as []" }
+    - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-up", value: "@as []" }
+
+- name: Configure nautilus
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+  loop:
+    - { key: "/org/gnome/nautilus/compression/default-compression-format", value: "'zip'" }
+  
+- name: Configure terminal mode and keybindings
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+  loop:
+    - { key: "/org/gnome/terminal/legacy/new-terminal-mode", value: "'tab'" }
+    - { key: "/org/gnome/terminal/legacy/keybindings/close-tab", value: "'<Primary>w'" }
+    - { key: "/org/gnome/terminal/legacy/keybindings/close-window", value: "'<Primary>q'" }
+    - { key: "/org/gnome/terminal/legacy/keybindings/find", value: "'<Primary>f'" }
+    - { key: "/org/gnome/terminal/legacy/keybindings/find-clear", value: "'<Primary>j'" }
+    - { key: "/org/gnome/terminal/legacy/keybindings/find-next", value: "'<Primary>g'" }
+    - { key: "/org/gnome/terminal/legacy/keybindings/find-previous", value: "'<Primary>h'" }
+    - { key: "/org/gnome/terminal/legacy/keybindings/move-tab-left", value: "'<Primary>Right'" }
+    - { key: "/org/gnome/terminal/legacy/keybindings/move-tab-right", value: "'<Primary>Left'" }
+    - { key: "/org/gnome/terminal/legacy/keybindings/new-tab", value: "'<Primary>t'" }
+    - { key: "/org/gnome/terminal/legacy/keybindings/new-window", value: "'<Primary>n'" }
+    - { key: "/org/gnome/terminal/legacy/keybindings/move-tab-right", value: "" }
+
+- name: Set terminal background color
+  community.general.gsettings:
+    key: "org.gnome.Terminal.Legacy.Settings"
+    value: "'#000000'"  # Replace '#000000' with your desired color
+    name: "background-color"
