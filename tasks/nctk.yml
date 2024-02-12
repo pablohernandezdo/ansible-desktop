@@ -1,48 +1,12 @@
+- name: Add NVIDIA Container Toolkit repository
+  shell: |
+    curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
+    && curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | \
+    sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
+    sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+
 - name: Install NVIDIA Container Toolkit
   apt:
-    name: "{{ item }}"
-    state: present
-  loop:
-    - apt-transport-https
-    - ca-certificates
-    - curl
-    - gnupg
-    - lsb-release
-  tags:
-    - nvidia_container_toolkit_prerequisites
-
-- name: Download NVIDIA Container Toolkit GPG key
-  ansible.builtin.get_url:
-    url: https://nvidia.github.io/libnvidia-container/gpgkey
-    dest: /tmp/nvidia-container-toolkit-keyring.gpg
-
-- name: Add NVIDIA Container Toolkit GPG key to keyring
-  ansible.builtin.shell: gpg --dearmor < /tmp/nvidia-container-toolkit-keyring.gpg > /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg
-
-- name: Download NVIDIA Container Toolkit repository configuration
-  ansible.builtin.get_url:
-    url: https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list
-    dest: /tmp/nvidia-container-toolkit.list
-
-- name: Modify repository configuration to include GPG key
-  ansible.builtin.lineinfile:
-    path: /tmp/nvidia-container-toolkit.list
-    line: "deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://nvidia.github.io/libnvidia-container/stable/deb/ {{ ansible_distribution_release }} /nvidia-container-toolkit"
-
-- name: Move modified repository configuration to /etc/apt/sources.list.d/
-  ansible.builtin.copy:
-    src: /tmp/nvidia-container-toolkit.list
-    dest: /etc/apt/sources.list.d/nvidia-container-toolkit.list
-    owner: root
-    group: root
-    mode: '0644'
-
-- name: Update apt cache
-  ansible.builtin.apt:
-    update_cache: yes
-
-- name: Update apt cache and install nvidia-container-toolkit
-  ansible.builtin.apt:
-    update_cache: yes
     name: nvidia-container-toolkit
-    state: latest
+    state: present
+    update_cache: yes
