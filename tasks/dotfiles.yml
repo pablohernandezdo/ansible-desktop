@@ -1,2 +1,8 @@
 - name: copy bashrc
   copy: src=dotfiles/.bashrc dest=/home/pablo/.bashrc owner=pablo group=pablo mode=0644
+
+- name: copy nanorc
+  copy: src=dotfiles/.nanorc dest=/home/pablo/.nanorc owner=pablo group=pablo mode=0644
+
+- name: copy tmux conf
+  copy: src=dotfiles/.tmux.conf dest=/home/pablo/.tmux.conf owner=pablo group=pablo mode=0644
