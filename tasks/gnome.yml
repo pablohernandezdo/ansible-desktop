@@ -79,9 +79,4 @@
     - { key: "/org/gnome/terminal/legacy/keybindings/move-tab-right", value: "'<Primary>Left'" }
     - { key: "/org/gnome/terminal/legacy/keybindings/new-tab", value: "'<Primary>t'" }
     - { key: "/org/gnome/terminal/legacy/keybindings/new-window", value: "'<Primary>n'" }
-    
-- name: Set terminal background color
-  dconf:
-    key: "/org/gnome/terminal/legacy/profiles:/{{profileid}}background-color"
-    value: "'rgb(0,0,0)'"
-  become_user: pablo
+
