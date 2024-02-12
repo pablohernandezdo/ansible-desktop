@@ -12,7 +12,7 @@
     update_cache: yes
 
 - name: Configure docker runtime
-  shell: nvidia-nctk runtime configure --runtime=docker
+  shell: nvidia-ctk runtime configure --runtime=docker
 
 - name: Restart docker
   service:
