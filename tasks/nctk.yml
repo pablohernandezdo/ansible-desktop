@@ -1,0 +1,41 @@
+- name: Install NVIDIA Container Toolkit
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - gnupg
+    - lsb-release
+  tags:
+    - nvidia_container_toolkit_prerequisites
+
+- name: Add NVIDIA container toolkit repository key
+  apt_key:
+    url: https://nvidia.github.io/nvidia-docker/gpgkey
+    state: present
+  tags:
+    - nvidia_container_toolkit_repository_key
+
+- name: Add NVIDIA container toolkit repository
+  apt_repository:
+    repo: "deb https://nvidia.github.io/nvidia-docker/{{ ansible_distribution | lower }}{{ ansible_distribution_release }}/{{ ansible_architecture }}/ /"
+    state: present
+  tags:
+    - nvidia_container_toolkit_repository
+
+- name: Update APT package cache
+  apt:
+    update_cache: yes
+  tags:
+    - nvidia_container_toolkit_update_cache
+
+- name: Install NVIDIA container toolkit
+  apt:
+    name:
+      - nvidia-container-toolkit 
+      - nvidia-docker2
+    state: present
+  tags:
+    - nvidia_container_toolkit_install
