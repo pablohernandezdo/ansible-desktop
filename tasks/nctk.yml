@@ -10,3 +10,11 @@
     name: nvidia-container-toolkit
     state: present
     update_cache: yes
+
+- name: Configure docker runtime
+  shell: nvidia-nctk runtime configure --runtime=docker
+
+- name: Restart docker
+  service:
+    name: docker
+    state: restarted
